@@ -1,5 +1,6 @@
 {
     "liveServer.settings.CustomBrowser": "chrome",
     "liveServer.settings.NoBrowser": false,
-    "liveServer.settings.host": "0"
+    "liveServer.settings.host": "0",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
