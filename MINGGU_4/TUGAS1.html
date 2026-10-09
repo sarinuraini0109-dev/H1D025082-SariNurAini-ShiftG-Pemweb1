@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 1 - Penilaian Akumulatif</title>
+</head>
+<body>
+    <h2>Aplikasi Pengambil Keputusan Nilai</h2>
+    <label for="nilai">Masukkan Nilai (0 - 100): </label>
+    <input type="number" id="nilai" min="0" max="100">
+    <button onclick="hitungNilai()">Hitung Grade</button>
+
+    <h3 id="hasil"></h3>
+
+    <script>
+        function hitungNilai() {
+            const input = document.getElementById("nilai").value;
+            const hasil = document.getElementById("hasil");
+
+            if (input === "") {
+                hasil.innerText = "Harap masukkan nilai terlebih dahulu!";
+                return;
+            }
+
+            const nilai = parseFloat(input);
+            let grade = "";
+
+            if (nilai >= 0 && nilai <= 20) {
+                grade = "E";
+            } else if (nilai >= 21 && nilai <= 40) {
+                grade = "D";
+            } else if (nilai >= 41 && nilai <= 60) {
+                grade = "C";
+            } else if (nilai >= 61 && nilai <= 80) {
+                grade = "B";
+            } else if (nilai >= 81 && nilai <= 100) {
+                grade = "A";
+            } else {
+                grade = "Nilai di luar jangkauan (0 - 100)!";
+                hasil.innerText = grade;
+                return;
+            }
+
+            hasil.innerText = "Hasil Grade: " + grade;
+        }
+    </script>
+</body>
+</html>

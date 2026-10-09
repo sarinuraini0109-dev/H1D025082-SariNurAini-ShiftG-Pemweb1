@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Form Validasi</title>
+</head>
+<body>
+    <form name="formLatihan" method="POST" onsubmit="return validasiForm()">
+        <table>
+            <tr>
+                <td>Nama</td>
+                <td>: <input type="text" id="nama" name="nama"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>: <input type="text" id="email" name="email"></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;">Komentar</td>
+                <td>: <textarea id="komentar" name="komentar" rows="5" cols="30"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Simpan">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function validasiForm() {
+            const nama = document.getElementById("nama").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const komentar = document.getElementById("komentar").value.trim();
+
+            // 1. Cek field tidak boleh kosong
+            if (nama === "" || email === "" || komentar === "") {
+                alert("Semua field (Nama, Email, dan Komentar) wajib diisi!");
+                return false;
+            }
+
+            // 2. Cek nama tidak boleh ada angka atau simbol (hanya huruf dan spasi)
+            const regexNama = /^[a-zA-Z\s]+$/;
+            if (!regexNama.test(nama)) {
+                alert("Nama hanya boleh berisi huruf dan spasi (tidak boleh mengandung angka atau simbol)!");
+                return false;
+            }
+
+            alert("Data berhasil disimpan!");
+            return true;
+        }
+    </script>
+</body>
+</html>

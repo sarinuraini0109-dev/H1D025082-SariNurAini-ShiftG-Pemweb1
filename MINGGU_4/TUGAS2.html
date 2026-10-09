@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas 2 - Kalkulator Sederhana</title>
+</head>
+<body>
+    <h2>Kalkulator Sederhana</h2>
+    <table>
+        <tr>
+            <td>Angka 1:</td>
+            <td><input type="number" id="angka1"></td>
+        </tr>
+        <tr>
+            <td>Angka 2:</td>
+            <td><input type="number" id="angka2"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="hitung('+')">+</button>
+                <button onclick="hitung('-')">-</button>
+                <button onclick="hitung('*')">×</button>
+                <button onclick="hitung('/')">÷</button>
+            </td>
+        </tr>
+    </table>
+
+    <h3 id="hasil">Hasil: -</h3>
+
+    <script>
+        function hitung(operator) {
+            const val1 = document.getElementById("angka1").value;
+            const val2 = document.getElementById("angka2").value;
+            const hasilElement = document.getElementById("hasil");
+
+            if (val1 === "" || val2 === "") {
+                hasilElement.innerText = "Harap isi kedua angka!";
+                return;
+            }
+
+            const num1 = parseFloat(val1);
+            const num2 = parseFloat(val2);
+            let result = 0;
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        hasilElement.innerText = "Tidak dapat melakukan pembagian dengan nol!";
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+            }
+
+            hasilElement.innerText = "Hasil: " + result;
+        }
+    </script>
+</body>
+</html>
